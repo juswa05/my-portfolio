@@ -32,7 +32,7 @@ public class User {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_created")
-    private Date dateCreated;
+    private Date dateCreated = new Date();
 
     // Getters and Setters
     public int getUserId() {
