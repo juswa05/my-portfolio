@@ -3,6 +3,7 @@ import com.josh.model.User;
 import com.josh.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.mindrot.jbcrypt.BCrypt;
 
 @Service
 public class UserService {
@@ -14,6 +15,10 @@ public class UserService {
     }
 
     public User registerUser(User user){
+        // Hash the password before saving
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
+
         return userRepository.save(user);
     }
 }
