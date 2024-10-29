@@ -2,6 +2,10 @@ package com.josh.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users_table")
@@ -12,21 +16,31 @@ public class User {
     @Column(name = "user_id")
     private int user_id;
 
+    @NotBlank(message = "First name is required")
     @Column(name = "first_name")
     private String firstName;
 
+    @NotBlank(message = "Last name is required")
     @Column(name = "last_name")
     private String lastName;
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
     @Column(name = "email")
     private String email;
 
+    @NotBlank(message = "Phone no. is required")
+    @Pattern(regexp = "^\\d{11}$", message = "Contact number must be 11 digits")
     @Column(name = "contact_no")
     private String contactNo;
 
+    @NotBlank(message = "Username is required")
+    @Size(min = 4, message = "Username must be at least 4 characters")
     @Column(name = "username")
     private String username;
 
+    @NotBlank(message = "Password is required")
+    @Size(min = 8, message = "Password must be at least 8 characters")
     @Column(name = "password")
     private String password;
 

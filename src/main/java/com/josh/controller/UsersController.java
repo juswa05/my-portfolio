@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import javax.validation.Valid;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -24,7 +25,7 @@ public class UsersController {
     }
 
     @PostMapping("/register")
-    public User registerUser(@RequestBody User user){
+    public User registerUser(@Valid @RequestBody User user){
         return userService.registerUser(user);
     }
 
