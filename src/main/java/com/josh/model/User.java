@@ -48,6 +48,17 @@ public class User {
     @Column(name = "date_created")
     private Date dateCreated = new Date();
 
+    // This is the honeypot field
+    private String honeypot;
+
+    public String getHoneypot() {
+        return honeypot;
+    }
+
+    public void setHoneypot(String honeypot) {
+        this.honeypot = honeypot;
+    }
+
     // Getters and Setters
     public int getUserId() {
         return user_id;
